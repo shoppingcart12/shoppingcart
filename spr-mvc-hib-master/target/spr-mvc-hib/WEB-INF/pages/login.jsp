@@ -27,9 +27,10 @@
                 
             <tr>
                     <td></td>
+                    <td><a href="${pageContext.request.contextPath}/userSignUp">NewUser SignUp</a></td>
+                    <td></td>
                     <td><a href="${pageContext.request.contextPath}/forgot">Forgot Password</a></td>
                 </tr>
-                
             </table>
             <div style="color: red">${msg}</div>
         </div>

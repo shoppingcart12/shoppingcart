@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name="users")
 public class Users implements Serializable{
 	
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="userid")
@@ -22,15 +21,13 @@ public class Users implements Serializable{
 	
 	@Column(name="username")
 	private String username;
+	
 	@Column(name="password")
 	private String password;
+	
 	@Column(name="email")
 	private String email;
-	
-	/*@OneToMany
-	private Role role;*/
-	
-	
+
 	@Column(name="roleid")
 	private Integer roleid;
 
@@ -73,11 +70,4 @@ public class Users implements Serializable{
 	public void setRoleid(Integer roleid) {
 		this.roleid = roleid;
 	}
-	
-	
-	
-	
-	
-	
-
 }

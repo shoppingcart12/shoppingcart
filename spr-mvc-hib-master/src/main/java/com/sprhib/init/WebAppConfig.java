@@ -39,46 +39,68 @@ public class WebAppConfig {
 	
 	@Bean
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		
+		DriverManagerDataSource dataSource = null;
+		try{
+	    dataSource =new DriverManagerDataSource();	
 		dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
 		dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
 		dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
 		dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
-		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return dataSource;
 	}
 	
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+		LocalSessionFactoryBean sessionFactoryBean=null;
+		try{
+		sessionFactoryBean = new LocalSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource());
 		sessionFactoryBean.setPackagesToScan(env.getRequiredProperty(PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN));
 		sessionFactoryBean.setHibernateProperties(hibProperties());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return sessionFactoryBean;
 	}
 	
 	private Properties hibProperties() {
-		Properties properties = new Properties();
+		Properties properties = null;
+		try{
+		properties = new Properties();
 		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
 		properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return properties;	
 	}
 	
 	@Bean
 	public HibernateTransactionManager transactionManager() {
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+		HibernateTransactionManager transactionManager = null;
+		try{
+		transactionManager = new HibernateTransactionManager();
 		transactionManager.setSessionFactory(sessionFactory().getObject());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return transactionManager;
 	}
 	
 	@Bean
 	public UrlBasedViewResolver setupViewResolver() {
-		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+		UrlBasedViewResolver resolver = null;
+		try{
+		resolver = new UrlBasedViewResolver();
 		resolver.setPrefix("/WEB-INF/pages/");
 		resolver.setSuffix(".jsp");
 		resolver.setViewClass(JstlView.class);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return resolver;
 	}
-
 }

@@ -11,7 +11,7 @@
 <h1>Home page</h1>
 <p>
 ${message}<br/>
-<a href="${pageContext.request.contextPath}/team/productlist.html">Product list</a><br/>
+<a href="${pageContext.request.contextPath}/product/productlist.html">Product list</a><br/>
 </p>
 </body>
 </html>

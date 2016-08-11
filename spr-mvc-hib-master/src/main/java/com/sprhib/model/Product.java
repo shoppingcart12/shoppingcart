@@ -24,8 +24,10 @@ public class Product {
 	
 	@Column
 	private String brand;
+	
 	@Column
 	private String imgpath;
+	
 	public Integer getProductid() {
 		return productid;
 	}
@@ -56,7 +58,4 @@ public class Product {
 	public void setImgpath(String imgpath) {
 		this.imgpath = imgpath;
 	}
-	
-	
-	
 }

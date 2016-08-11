@@ -20,6 +20,8 @@
 </tr>
 </thead>
 <tbody>
+
+
 <c:forEach var="product" items="${products}">
 <tr>
 	<td>${product.productid}</td>
@@ -31,7 +33,7 @@
 </tbody>
 </table>
 
-<p><a href="${pageContext.request.contextPath}/home.jsp">Home page</a></p>
+<p><a href="${pageContext.request.contextPath}/goUserHome">Home page</a></p>
 
 </body>
 </html>
