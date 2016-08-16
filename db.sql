@@ -4,7 +4,7 @@ create table users(username varchar(30), userid integer primary key, password va
 
 create table product(productid integer primary key, productname varchar(30),price integer, brand varchar(20), imgpath varchar(500));
 
-create table prodspecification(productid integer references product(productid), model varchar(20) );
+create table prodspecification(productid integer references product(productid), modelid integer primary key,modelname varchar(50));
 
 
 
